@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --brand: #ed704c;
+  --brand-dark: #c94f35;
+  --paper: #fffaf2;
+  --surface: #fffdf8;
+  --cream: #f7efe5;
+  --peach: #f8e3d2;
+  --lilac: #e9e0ed;
+  --plum: #51406d;
+  --leaf: #b6c86a;
+  --ink: #30251f;
+  --muted: #75685f;
+  --line: #e9ddcf;
+  --art-backdrop: #f4e6d5;
+  --art-sun: #f8d9b7;
+  --art-gift: #e77558;
+  --art-lid: #f18d6b;
+  --art-ribbon: #f7d678;
+  --art-ground: #d7dfbd;
+  --font-body-stack: Arial, Helvetica, sans-serif;
+  --font-display-stack: Georgia, "Times New Roman", serif;
+  --shadow-soft-value: 0 15px 45px rgb(99 71 43 / 8%);
+  --shadow-card-value: 0 12px 35px rgb(100 69 42 / 7%);
+  --shadow-button-value: 0 8px 18px rgb(223 119 81 / 19%);
+}
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-cream: var(--cream);
+  --color-peach: var(--peach);
+  --color-lilac: var(--lilac);
+  --color-plum: var(--plum);
+  --color-leaf: var(--leaf);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-art-backdrop: var(--art-backdrop);
+  --color-art-sun: var(--art-sun);
+  --color-art-gift: var(--art-gift);
+  --color-art-lid: var(--art-lid);
+  --color-art-ribbon: var(--art-ribbon);
+  --color-art-ground: var(--art-ground);
+  --shadow-soft: var(--shadow-soft-value);
+  --shadow-card: var(--shadow-card-value);
+  --shadow-button: var(--shadow-button-value);
+  --font-sans: var(--font-body-stack);
+  --font-display: var(--font-display-stack);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body-stack);
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea { font: inherit; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid #b26f92;
+  outline-offset: 3px;
+}
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
+select option { background: var(--surface); color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}

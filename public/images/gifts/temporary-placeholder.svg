@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+  <title id="title">Temporary sample gift placeholder</title>
+  <desc id="desc">A simple illustrated candle labeled as temporary sample content.</desc>
+  <rect width="720" height="520" rx="36" fill="#fff1df"/>
+  <circle cx="360" cy="240" r="145" fill="#ffd9b8"/>
+  <path d="M331 173c-2-28 26-44 29-74 29 25 39 54 24 78" fill="#f5a623"/>
+  <rect x="250" y="205" width="220" height="190" rx="28" fill="#fffaf4" stroke="#a76554" stroke-width="8"/>
+  <path d="M350 205h20v-34h-20z" fill="#a76554"/>
+  <text x="360" y="294" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#67443d">SAMPLE GIFT</text>
+  <text x="360" y="331" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" fill="#8b6259">replace this image</text>
+  <text x="360" y="474" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="2" fill="#8b6259">TEMPORARY PLACEHOLDER</text>
+</svg>

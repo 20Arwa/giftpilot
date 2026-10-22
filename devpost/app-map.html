@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>GiftPilot App Map</title>
+  <style>
+    :root { color-scheme: light; --paper: #fffaf4; --ink: #32261f; --muted: #75675e; --brand: #c85f49; --line: #eadfd4; --card: #fff; --soft: #f5e9df; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); line-height: 1.6; }
+    main { width: min(900px, calc(100% - 32px)); margin: 40px auto 72px; }
+    h1, h2, h3 { line-height: 1.2; }
+    h1 { margin: 0; font-size: clamp(2rem, 6vw, 3.25rem); letter-spacing: -.04em; }
+    h2 { margin-top: 2.25rem; font-size: 1.4rem; }
+    p { color: var(--muted); }
+    .eyebrow { color: var(--brand); font-size: .75rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .card { margin-top: 18px; padding: 22px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); }
+    code { padding: .12rem .35rem; border-radius: 5px; background: var(--soft); color: #713d31; overflow-wrap: anywhere; }
+    .flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: stretch; }
+    .step { min-width: 0; padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); }
+    .step b { display: block; margin-bottom: 6px; color: var(--brand); }
+    .arrow { align-self: center; color: var(--brand); text-align: center; font-weight: 800; }
+    ul { padding-left: 1.25rem; }
+    li { margin: .55rem 0; color: var(--muted); }
+    .note { padding: 14px 16px; border-left: 4px solid var(--brand); border-radius: 8px; background: var(--soft); }
+    footer { margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); font-size: .85rem; color: var(--muted); }
+    @media (max-width: 620px) { main { margin-top: 24px; } .flow { grid-template-columns: 1fr; } .arrow { transform: rotate(90deg); } .card { padding: 18px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Project guide</p>
+    <h1>GiftPilot app map</h1>
+    <p>GiftPilot turns a visitor’s recipient, occasion, target budget in SAR, and interests into three personalized gift ideas. The ideas are not product listings: the server validates them and builds search links to a fixed set of shopping sites.</p>
+
+    <section class="card" aria-labelledby="journey-title">
+      <h2 id="journey-title">One search, from form to result</h2>
+      <div class="flow" role="img" aria-label="The finder validates preferences, the server calls Gemini and constructs trusted store links, and the page shows three gift ideas.">
+        <div class="step"><b>1 · Preferences</b><code>components/gift-finder-form.tsx</code><br>Collects answers and shows inline ideas after success.</div>
+        <div class="step"><b>2 · Validate and recommend</b><code>lib/recommendation-schema.ts</code><br><code>app/api/recommendations/route.ts</code><br><code>lib/gemini.ts</code></div>
+        <div class="step"><b>3 · Safe store links and cards</b><code>lib/stores.ts</code><br><code>components/recommendation-results.tsx</code></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="route-title">
+      <h2 id="route-title">Reference route through the code</h2>
+      <p>This is a map for exploring; it does not claim a live editor walkthrough took place.</p>
+      <ol>
+        <li>In <code>components/gift-finder-form.tsx</code>, find <code>submit</code>. It runs the shared schema before sending the answers to <code>/api/recommendations</code>.</li>
+        <li>In <code>app/api/recommendations/route.ts</code>, find <code>POST</code>. It validates again, calls Gemini once, checks the response and prevents untrusted store IDs or model-made URLs from reaching the page.</li>
+        <li>In <code>components/recommendation-results.tsx</code>, find <code>RecommendationResults</code>. It renders the three ideas, target budget, safety note, and external links.</li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="changes-title">
+      <h2 id="changes-title">To change this, start here</h2>
+      <ul>
+        <li>Change recipient/occasion choices, budgets, text limits, or response types in <code>lib/recommendation-schema.ts</code>.</li>
+        <li>Change store hosts, search URL formats, or category fallback rules in <code>lib/stores.ts</code>.</li>
+        <li>Change how the AI is instructed or which model is used in <code>lib/gemini.ts</code>; the API key is server-only in <code>GEMINI_API_KEY</code>.</li>
+        <li>Change the gift-finder layout and states in <code>components/gift-finder-form.tsx</code>, and the result card appearance in <code>components/recommendation-results.tsx</code>.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="practice-title">
+      <h2 id="practice-title">A practice to reuse</h2>
+      <p>Keep the same input contract on both sides of an API boundary: the browser checks <code>preferencesSchema</code> before submission, and the route checks it again. Then validate provider output separately before turning it into visible data. This project applies that pattern in <code>lib/recommendation-schema.ts</code> and <code>app/api/recommendations/route.ts</code>; it helps catch malformed or untrusted data in other apps too.</p>
+    </section>
+
+    <section aria-labelledby="run-title">
+      <h2 id="run-title">Run it again</h2>
+      <p>Install dependencies with <code>npm install</code>, set <code>GEMINI_API_KEY</code> and optionally <code>GEMINI_MODEL</code> in the ignored local <code>.env.local</code>, then run <code>npm run dev</code> and open <code>http://localhost:3000</code>. The AI request needs a valid key.</p>
+      <p class="note">Sample gift image assets are illustrative only. Recommendation cards are AI-generated ideas; verify prices, availability, shipping, and sellers on the linked shopping sites.</p>
+    </section>
+
+    <footer>Offline-friendly reference generated from the current project source. No source commit was available when this map was prepared; refresh the map if the flow changes.</footer>
+  </main>
+</body>
+</html>
