@@ -81,15 +81,15 @@ Build mode: fast
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — the reference route is prepared below; learner has not yet followed it in the editor.
-- [ ] Optional edit and transfer reflection addressed — to offer after the short code tour.
+- [x] Learning activity complete — connected the earlier gibberish-preference investigation to the input-schema-route-response path.
+- [x] Optional edit and transfer reflection addressed — optional transfer question offered in the closeout; no code edit was needed.
 - [x] `devpost/app-map.html` generated from finished code and source references checked; shown as a link in the closeout message. It includes a project-grounded practice to reuse.
 
-Activity and evidence: `npm.cmd run lint` and `npm.cmd run build` passed. User completed final hands-on review and reported no issues. App map created at `devpost/app-map.html` from source commit `b4f5cc3`; paths and symbols were checked against source. Short code tour remains.
-Route and stops: Reference route prepared: `components/gift-finder-form.tsx` → `app/api/recommendations/route.ts` → `components/recommendation-results.tsx`. No interactive stops completed yet.
+Activity and evidence: During the gibberish-preference investigation, the learner supplied random recipient/occasion/interest text, reported that random recommendations still appeared, and iterated on semantic assessment and English error handling. The app's shared schema is `lib/recommendation-schema.ts`; server validation and response handling are in `app/api/recommendations/route.ts`; user-visible outcomes are handled in `components/gift-finder-form.tsx`. The earlier test report covered multiple gibberish inputs and valid English, Arabic, unusual-name, and blank-interest examples. `npm.cmd run lint` and `npm.cmd run build` passed during closeout. App map: `devpost/app-map.html`, based on source commit `b4f5cc3`.
+Route and stops: Prior-practice route connected: `components/gift-finder-form.tsx` (`submit`) → `lib/recommendation-schema.ts` (`preferencesSchema`) → `app/api/recommendations/route.ts` (`POST`) → `components/recommendation-results.tsx` (`RecommendationResults`). This records the prior investigation; no new live editor tour was performed.
 Edit outcome: Not applicable; no optional code edit attempted.
-Reflection: Not offered yet; offer one optional transfer question after the code tour.
-Activity mode: Reference route prepared for a guided editor walkthrough; not yet completed.
+Reflection: Optional transfer question offered in closeout; response not required to complete the build.
+Activity mode: Prior practice connected to the implementation and reported test evidence; app map is the take-home reference.
 
 ## Revisions
 
