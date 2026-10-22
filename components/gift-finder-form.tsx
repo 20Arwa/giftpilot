@@ -42,7 +42,7 @@ export function GiftFinderForm() {
 
   function scrollToForm() {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    window.setTimeout(() => formRef.current?.querySelector<HTMLElement>('[role="combobox"]')?.focus({ preventScroll: true }), 650);
+    window.setTimeout(() => formRef.current?.querySelector<HTMLElement>('[role="combobox"]')?.focus({ preventScroll: true }), 450);
   }
 
   function update<K extends Field>(field: K, value: FormValues[K]) {
@@ -66,7 +66,6 @@ export function GiftFinderForm() {
       }
       setErrors(nextErrors);
       setFormMessage("Please complete the required fields above to find your gift ideas.");
-      setResultSet(null);
       return;
     }
     setErrors({});
@@ -84,7 +83,6 @@ export function GiftFinderForm() {
         const message = typeof payload === "object" && payload && "error" in payload && typeof payload.error === "string"
           ? payload.error
           : "Something went wrong. Please try again.";
-        if (response.status === 422) setResultSet(null);
         throw new Error(message);
       }
       const validated = recommendationResponseSchema.safeParse(payload);
