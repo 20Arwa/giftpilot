@@ -17,7 +17,7 @@
     .eyebrow { color: var(--brand); font-size: .75rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
     .card { margin-top: 18px; padding: 22px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); }
     code { padding: .12rem .35rem; border-radius: 5px; background: var(--soft); color: #713d31; overflow-wrap: anywhere; }
-    .flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: stretch; }
+    .flow { display: grid; grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr) 24px minmax(0, 1fr); gap: 8px; align-items: stretch; }
     .step { min-width: 0; padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); }
     .step b { display: block; margin-bottom: 6px; color: var(--brand); }
     .arrow { align-self: center; color: var(--brand); text-align: center; font-weight: 800; }
@@ -38,7 +38,9 @@
       <h2 id="journey-title">One search, from form to result</h2>
       <div class="flow" role="img" aria-label="The finder validates preferences, the server calls Gemini and constructs trusted store links, and the page shows three gift ideas.">
         <div class="step"><b>1 · Preferences</b><code>components/gift-finder-form.tsx</code><br>Collects answers and shows inline ideas after success.</div>
+        <div class="arrow" aria-hidden="true">→</div>
         <div class="step"><b>2 · Validate and recommend</b><code>lib/recommendation-schema.ts</code><br><code>app/api/recommendations/route.ts</code><br><code>lib/gemini.ts</code></div>
+        <div class="arrow" aria-hidden="true">→</div>
         <div class="step"><b>3 · Safe store links and cards</b><code>lib/stores.ts</code><br><code>components/recommendation-results.tsx</code></div>
       </div>
     </section>
@@ -74,7 +76,7 @@
       <p class="note">Sample gift image assets are illustrative only. Recommendation cards are AI-generated ideas; verify prices, availability, shipping, and sellers on the linked shopping sites.</p>
     </section>
 
-    <footer>Offline-friendly reference generated from the current project source. No source commit was available when this map was prepared; refresh the map if the flow changes.</footer>
+    <footer>Offline-friendly reference for source commit <code>b4f5cc3</code>. Refresh the map if the flow changes.</footer>
   </main>
 </body>
 </html>
