@@ -1,6 +1,6 @@
 # GiftPilot
 
-![GiftPilot hero section](./public/images/hero-section.png)
+![GiftPilot hero section](/images/hero-section.png)
 
 GiftPilot is an AI-powered gift discovery application designed for visitors in Saudi Arabia. It helps users find three personalized gift ideas based on the recipient, occasion, budget, and interests, with links to search for those ideas on selected shopping sites.
 
